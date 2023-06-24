@@ -4,11 +4,18 @@ services:
     django1:
       build: .
 
-      command: python3 manage.py makemigrations first_api
-               python3 manage.py migrate
-               python3 manage.py runserver 0.0.0.0:7777
+      command: python3 manage.py runserver 0.0.0.0:7777
     
       volumes:
           - .:/usr/src/app
       ports:
         - "8000:7777"
+    makemigrations:
+      build: .
+      profiles: ["makemigrations"]
+      command: python manage.py makemigrations fisrt_api
+
+    migrate:
+      build: .
+      profiles: ["migrate"]
+      command: python manage.py migrate
