@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    django1:
+      build: .
+
+      command: python manage.py runserver 0.0.0.0:7777
+    
+      volumes:
+          - .:/usr/src/app
+      ports:
+        - "8000:7777"
