@@ -4,7 +4,9 @@ services:
     django1:
       build: .
 
-      command: python manage.py runserver 0.0.0.0:7777
+      command: python3 manage.py makemigrations first_api
+               python3 manage.py migrate
+               python3 manage.py runserver 0.0.0.0:7777
     
       volumes:
           - .:/usr/src/app
